@@ -1,0 +1,16 @@
+title: 'Terrapin Publications'
+
+defaults:
+  -
+    scope:
+      path: ""      # an empty string here means all files in the project
+      type: pages
+    values:
+      verify: false # do not verify logins
+      toc: true     # display a TOC on every page
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - CNAME

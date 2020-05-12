@@ -1,0 +1,11 @@
+{% if page.toc != false %}
+<div class="toc">
+    <button class="btn btn-link btn-sm" type="button" data-toggle="collapse"
+        data-target="#toc-collapse" aria-expanded="false" aria-controls="toc-collapse">
+        Table of Contents
+    </button>
+    <div class="collapse" id="toc-collapse">
+        {% include jekyll-toc.html html=content sanitize=true class="inline_toc" id="toc" h_min=2 h_max=3 %}
+    </div>
+</div>
+{% endif %}

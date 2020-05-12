@@ -1,0 +1,101 @@
+/**
+ * Terrapin Styles
+ *
+ * VS Code also autoloads this file if you set it
+ * in the Markdown Styles setting.
+ */
+table {
+    border-collapse: collapse;
+}
+table td, table th {
+    padding: 0.4rem 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+table th {
+    border-bottom: 2px solid #dee2e6;
+
+}
+
+code {
+    color: inherit !important;
+}
+
+.highlighter-rouge {
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    padding: 5px;
+}
+
+pre {
+    background-color: #f8f8f8;
+    padding: 5px;
+}
+pre.highlight {
+    margin: 0;
+}
+
+.example {
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    font-size: 87.5% !important;
+    display: block;
+    white-space: pre;
+    padding: 5px;
+    background-color: #e8ffe8;
+}
+.example span::before {
+    content: "> ";
+}
+.example strong {
+    font-weight: normal;
+    font-style: italic;
+    color: blue;
+}
+.example em {
+    font-weight: normal;
+    font-style: italic;
+    color: red;
+}
+
+/** Use hashes to align images eg note.png#left */
+
+img {
+    max-width: 100%;
+}
+
+img[src*='#left'] {
+    float: left;
+    margin-right: 10px;
+}
+img[src*='#right'] {
+    float: right;
+    margin-left: 5px;
+}
+img[src*='#center'] {
+    display: block;
+    margin: auto;
+}
+
+table.cmdref span.table-up {
+    float: right;
+}
+table.cmdref span.table-up:after {
+    content: ' ^';
+}
+
+/** Use hashes to align images eg note.png#left */
+
+img[src*='#left'] {
+    float: left;
+    margin-right: 10px;
+}
+img[src*='#right'] {
+    float: right;
+    margin-left: 5px;
+}
+img[src*='#center'] {
+    display: block;
+    margin: auto;
+}

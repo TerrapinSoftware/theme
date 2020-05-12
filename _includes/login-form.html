@@ -1,0 +1,17 @@
+<div class="box shadow clearfix" style="max-width:40ch;margin:30px auto 0 auto;padding:20px">
+    <form id="login-form" class="needs-validation was-validated" novalidate>
+        <div class="form-group">
+            <label for="code">{{page.login-form.prompt}}</label>
+            <input type="text" class="form-control" id="code" pattern="([0-9a-zA-Z]{5}-){4}[0-9a-zA-Z]{5}"
+                placeholder="XXXXX-XXXXX-XXXXX-XXXXX-XXXXX" required>
+            <div class="invalid-feedback">
+                {{page.login-form.help}}
+            </div>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="remember">
+            <label class="form-check-label" for="remember" style="color:inherit">{{page.login-form.remember}}</label>
+        </div>
+        <button id="login" class="btn btn-primary float-right">{{page.login-form.button}}</button>
+    </form>
+</div>
