@@ -1,3 +1,5 @@
+theme:
+
 title: 'Terrapin Publications'
 
 defaults:
@@ -6,11 +8,14 @@ defaults:
       path: ""      # an empty string here means all files in the project
       type: pages
     values:
-      verify: false # do not verify logins
-      toc: true     # display a TOC on every page
+      # do not verify logins
+      verify: false
+      # display a TOC on page
+      toc: true
+      # sidebar settings
+      sidebar: 
+        file: _sidebar.md
+        width: 250px
 
 exclude:
   - README.md
-  - Gemfile
-  - Gemfile.lock
-  - CNAME

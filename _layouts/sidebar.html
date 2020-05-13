@@ -1,9 +1,9 @@
 ---
 layout: base
-sidebar: _sidebar.md
 ---
 
-{% capture sidebar %}{% include_relative {{ page.sidebar }} %}{% endcapture %}
+{% capture sidebar %}{% include_relative {{ page.sidebar.file }} %}{% endcapture %}
+<script>var sidebar_width = "{{ page.sidebar.width }}";</script>
 <div class="header">
     <a href="https://www.terrapinlogo.com" title="Visit Terrapin" target="_blank"><img src="/assets/img/terrapin_logo.png" /></a>
     <div id="title"><div>{{ site.title }}</div></div>
@@ -20,7 +20,6 @@ sidebar: _sidebar.md
     <div id="splitter" class="d-none d-sm-block"></div>
     <div id="contents" class="row">
         <div class="col-12">
-            {% include toc.html %}
             {{ content }}
         </div>
     </div>

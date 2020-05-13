@@ -14,7 +14,6 @@ table td, table th {
 }
 table th {
     border-bottom: 2px solid #dee2e6;
-
 }
 
 code {
@@ -37,6 +36,8 @@ pre.highlight {
     margin: 0;
 }
 
+/* Our <span class="example"> settings */
+
 .example {
     font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
     font-size: 87.5% !important;
@@ -44,9 +45,6 @@ pre.highlight {
     white-space: pre;
     padding: 5px;
     background-color: #e8ffe8;
-}
-.example span::before {
-    content: "> ";
 }
 .example strong {
     font-weight: normal;
@@ -64,7 +62,6 @@ pre.highlight {
 img {
     max-width: 100%;
 }
-
 img[src*='#left'] {
     float: left;
     margin-right: 10px;
@@ -77,25 +74,12 @@ img[src*='#center'] {
     display: block;
     margin: auto;
 }
+
+/* The "Up^" marker in the Logo Table of Commands */
 
 table.cmdref span.table-up {
     float: right;
 }
 table.cmdref span.table-up:after {
     content: ' ^';
-}
-
-/** Use hashes to align images eg note.png#left */
-
-img[src*='#left'] {
-    float: left;
-    margin-right: 10px;
-}
-img[src*='#right'] {
-    float: right;
-    margin-left: 5px;
-}
-img[src*='#center'] {
-    display: block;
-    margin: auto;
 }

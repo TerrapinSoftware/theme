@@ -9,7 +9,7 @@ $(document).ready(function() {
         $("#error").hide();
         var code = $("#code").val().trim().toUpperCase();
         var xmlhttp = new XMLHttpRequest();
-        var url = "https://ls.terrapinlogo.com?c=" + code;
+        var url = atob("aHR0cHM6Ly9scy50ZXJyYXBpbmxvZ28uY29tP2M9") + code;
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
                 if (this.status == 200) {

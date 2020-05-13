@@ -1,6 +1,7 @@
 ---
 layout: sidebar
-sidebar: sb.md
+sidebar:
+  width: 150px
 ---
 
 # Sidebar Test

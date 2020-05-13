@@ -2,7 +2,7 @@
     var token = sessionStorage.getItem("token");
     if (token) {
         var xmlhttp = new XMLHttpRequest();
-        var url = "https://ls.terrapinlogo.com?t=" + token;
+        var url = atob("aHR0cHM6Ly9scy50ZXJyYXBpbmxvZ28uY29tP3Q9") + token;
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
                 if (this.status == 200) {
@@ -37,7 +37,7 @@ $(document).ready(function() {
         var token = sessionStorage.getItem("token");
         if (token) {
             var xmlhttp = new XMLHttpRequest();
-            var url = "https://ls.terrapinlogo.com?r=" + token;
+            var url = atob("aHR0cHM6Ly9scy50ZXJyYXBpbmxvZ28uY29tP3I9") + token;
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4) {
                     sessionStorage.removeItem("token");

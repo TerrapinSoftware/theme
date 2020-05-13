@@ -22,9 +22,14 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    {% if page.verify %}
-    <script src="/assets/js/verify.js"></script>
+    {% if page.layout == 'sidebar' %}
+    <script src="/assets/js/jquery-splitter.js"></script>
     {% endif %}
+    {% if page.verify != false %}
+    <script src="/assets/js/verify.min.js"></script>
+    {% endif %}
+    {% include head-{{page.layout}}.html %}
+    <script src="/assets/js/styles.js"></script>
     {% for script in page.scripts %}
         <script src="/assets/js/{{script}}"></script>
     {% endfor %}
