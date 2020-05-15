@@ -132,6 +132,15 @@ a {
   h5 {
     font-size: $sb_text_size;
   }
+  ul {
+    padding-inline-start: 5px;
+  }
+  li:before {
+    content: "- ";
+  }
+  p, dl, ol, ul {
+    margin-bottom: 0.5rem;
+  }
 }
 
 #contents {
