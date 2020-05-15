@@ -34,7 +34,7 @@ In the `/assets/css` folder, we have the `styles.scss` and the `terrapin.css` fi
 
 ## Log-In Pages
 
-The assets for a log-in page are defined here as well. Use this skeleton for a log-in page:
+The assets for a log-in page are defined here as well. Use this template for a log-in page:
 
 ```markdown
 ---
@@ -43,7 +43,7 @@ layout: default
 verify: false
 toc: false
 scripts:
-  - login.js
+  - login.min.js
 
 # the messages for the login form
 login-form:

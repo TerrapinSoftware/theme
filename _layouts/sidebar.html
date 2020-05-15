@@ -20,7 +20,10 @@ layout: base
     <div id="splitter" class="d-none d-sm-block"></div>
     <div id="contents" class="row">
         <div class="col-12">
+            {% include toc.html %}
+            <!-- CONTENT BGN -->
             {{ content }}
+            <!-- CONTENT END -->
         </div>
     </div>
 </div>
