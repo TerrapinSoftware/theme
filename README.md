@@ -59,3 +59,27 @@ login-form:
 
 {% include login-form.html %}
 ```
+## Local Files
+
+Your local `Gemfile` (which is not checked in) looks like this:
+
+    source "https://rubygems.org"
+    gem 'github-pages', group: :jekyll_plugins
+
+## Using the Theme
+
+You need to create two different config files for Jekyll. In `_config.yml`, add this line:
+
+    remote-theme: TerrapinSoftware/theme
+
+Create another file `_local.yml` and use this line instead of the line above:
+
+    theme: terrapin-theme
+
+Add this line to your local Gemfile (you may need to update the path):
+
+    gem "terrapin-theme", path: "../theme"
+
+Finally, start Jekyll with:
+
+    bundle exec jekyll serve --config _local.yml
