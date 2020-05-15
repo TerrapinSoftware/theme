@@ -15,7 +15,7 @@ layout: base
 </div>
 <div class="content">
     <div id="sidebar" class="d-none d-sm-block">
-        {{ sidebar | markdownify }}
+        <div class="fix">{{ sidebar | markdownify }}</div>
     </div>
     <div id="splitter" class="d-none d-sm-block"></div>
     <div id="contents" class="row">

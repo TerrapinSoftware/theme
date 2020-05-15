@@ -8,7 +8,11 @@ $(document).ready(function () {
             columnGutters: [{
                 track: 1,
                 element: document.querySelector('#splitter'),
-            }]
+            }],
+            onDrag: function() {
+                // since the inner div has absolute positioning
+                $("#sidebar>div").width($("#sidebar").width());
+            }
         });
     }
     /**
