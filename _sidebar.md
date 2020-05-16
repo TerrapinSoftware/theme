@@ -8,3 +8,7 @@ And this is a bit lengthy to see if it wraps nicely.
 - Another one.
 
 End of List.
+
+----
+
+[Visit Google!](https://google.com)

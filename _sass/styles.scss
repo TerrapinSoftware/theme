@@ -2,10 +2,9 @@ html,
 body {
   height: 100%;
   margin: 0;
-  background-color: var(--ini_background) !important;
-  color: var(--ini_text) !important;
-  font-family: Montserrat, sans-serif !important;
-  font-size: 11pt !important;
+  background-color: var(--background) !important;
+  color: var(--text) !important;
+  font: var(--font) !important;
   line-height: 1.5 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -21,30 +20,29 @@ blockquote {
   display: flex;
   flex-direction: column;
 }
-$header_height: 55px;
 
 .header {
-  height: $header_height;
+  font: var(--hdr_font) !important;
+  height: var(--hdr-height);
   display: flex;
   background-color: var(--hdr_background);
   color: var(--hdr_color);
   white-space: nowrap;
-  border-bottom: 1px solid var(--hdr_border);
+  border-bottom: var(--hdr_border);
   img {
     flex: 0;
     margin: 2px 10px;
   }
   #title {
     flex: 1;
-    padding: 10px;
+    line-height: var(--hdr-height);
     font-weight: bold;
-    font-size: 1.5em;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   #userinfo {
     flex: 0;
-    padding: 15px;
+    line-height: var(--hdr-height);
     // welcome message
     #welcome {
       display: inline-block;
@@ -59,12 +57,12 @@ $header_height: 55px;
   }
 }
 .footer {
+  font: var(--ftr_font) !important;
   background-color: var(--ftr_background);
   color: var(--ftr_color);
   white-space: nowrap;
-  border-top: 1px solid var(--hdr_border);
+  border-top: var(--hdr_border);
   padding: 2px 10px;
-  font-size: 0.8em;
   text-align: center;
 }
 .content {
@@ -97,17 +95,22 @@ $header_height: 55px;
 }
 
 a {
-  color: var(--link_color);
+  color: var(--link_text) !important;
+  background: var(link_hover_background) !important;
   &:hover {
-    color: var(--link_hover_color);
-    text-decoration: none;
+    color: var(--link_hover_text) !important;
+    text-decoration: var(--link_hover_decoration) !important;
   }
 }
 
+hr {
+  border-top: var(--hr_border) !important;
+}
+
 #splitter {
-  background-color: var(--splitter_background);
-  border-left: 1px solid var(--splitter_border);
-  border-right: 1px solid var(--splitter_border);
+  background-color: var(--splitter_background) !important;
+  border-left: 1px solid var(--splitter_border) !important;
+  border-right: 1px solid var(--splitter_border) !important;
   cursor: col-resize;
 }
 
@@ -123,6 +126,9 @@ a {
   * {
     text-overflow: ellipsis;
     overflow: hidden;
+  }
+  h1, h2, h3, h4, h5 {
+    font-weight: bold;
   }
   h1,
   h2 {
@@ -146,6 +152,19 @@ a {
   p, dl, ol, ul {
     margin-bottom: 0.5rem;
   }
+  a {
+    display: inline-block;
+    width: 100%;
+    color: var(--sb_link_text) !important;
+    &:hover {
+      background: var(--sb_link_hover_background) !important;
+      color: var(--sb_link_hover_text) !important;
+      text-decoration: var(--sb_link_hover_decoration) !important;
+    }
+  }
+  hr {
+    border-top: var(--sb_hr_border) !important;
+  }
 }
 
 #contents {
@@ -157,8 +176,10 @@ a {
   float: right;
   margin: 0 0 1.4em 1.4em;
   width: 20em;
-  background-color: #e5e5e5;
-  color: inherit;
+  background-color: var(--toc_background);
+  color: var(--toc_text);
+  border-left: var(--toc_border);
+  border-bottom: var(--toc_border);
   button {
     width: 100%;
     color: inherit;
