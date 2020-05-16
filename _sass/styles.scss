@@ -127,6 +127,7 @@ hr {
   font-size: var(--sb_text_size);
   height: 100%;
   * {
+    direction: ltr;
     text-overflow: ellipsis;
     overflow: hidden;
   }
