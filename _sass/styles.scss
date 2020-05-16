@@ -115,6 +115,7 @@ hr {
 }
 
 #sidebar {
+  direction: rtl;
   overflow-y: auto;
   line-height: 1rem;
   background-color: var(--sb_background);
@@ -164,9 +165,11 @@ hr {
 
 #contents {
   margin-left: 0;
-  max-width: 1100px;
   overflow-y: auto;
   padding: 0 15px;
+  .inner {
+    max-width: 1100px;
+  }
 }
 
 .toc {
@@ -176,6 +179,7 @@ hr {
   background-color: var(--toc_background);
   color: var(--toc_text);
   border-left: var(--toc_border);
+  border-right: var(--toc_border);
   border-bottom: var(--toc_border);
   button {
     width: 100%;
