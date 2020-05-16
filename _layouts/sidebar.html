@@ -6,7 +6,11 @@ layout: base
 <script>var sidebar_width = {{ page.sidebar.width }};</script>
 <div class="header">
     <a href="https://www.terrapinlogo.com" title="Visit Terrapin" target="_blank"><img src="/assets/img/terrapin_logo.png" /></a>
-    <div id="title"><div>{{ site.title }}</div></div>
+    <div>
+        <div id="title">{{ site.title }}</div>
+        <button class="toggle d-sm-none btn btn-sm btn-outline-dark" type="button" data-toggle="collapse"
+        data-target="#sidebar" aria-expanded="false" aria-controls="sidebar">Sidebar</button>
+    </div>
     {% if page.verify %}
     <div id="userinfo">
         <div id="welcome">Welcome, <span id="name"></span>!</div><button id="logout" class="btn btn-sm btn-outline-dark">Log Out</button>
@@ -14,8 +18,9 @@ layout: base
     {% endif %}
 </div>
 <div class="content">
-    <div id="sidebar" class="d-none d-sm-block">
-        {{ sidebar | markdownify }}
+    <div id="sidebar" class="d-sm-block collapse">
+        <div>{{ sidebar | markdownify }}</div>
+        
     </div>
     <div id="splitter" class="d-none d-sm-block"></div>
     <div id="contents">
