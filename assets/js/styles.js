@@ -29,6 +29,9 @@ $(document).ready(function () {
         if (empty)
             $(tr).hide();
     });
+    // Send a Verified event if there is no verification
+    if (!window.verifyToken)
+        $(document).trigger("verified");
 });
 $(document).on("verified", function() {
     // Set the height of a PDF iframe

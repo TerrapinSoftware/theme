@@ -1,4 +1,4 @@
-(function() {
+function verifyToken() {
     var token = sessionStorage.getItem("token");
     if (token) {
         var xmlhttp = new XMLHttpRequest();
@@ -29,7 +29,8 @@
         $(".wrapper").remove();
         location.href = "/";
     }
-})();
+};
+verifyToken();
 
 $(document).ready(function() {
     $("#logout").on("click", function(ev) {

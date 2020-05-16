@@ -11,6 +11,11 @@ body {
   padding: 0 !important;
 }
 
+blockquote {
+  border-left: 4px solid #ddd;
+  padding-left: 10px;
+}
+
 .wrapper {
   height: 100%;
   display: flex;
@@ -172,11 +177,6 @@ a {
       }
     }
   }
-}
-
-.box {
-  border: 1px solid #bbb;
-  padding: 10px;
 }
 
 .shadow {

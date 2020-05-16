@@ -4,6 +4,20 @@
  * VS Code also autoloads this file if you set it
  * in the Markdown Styles setting.
  */
+
+body {
+    --infobox-background: #dee2e6;
+    --infobox-text: #333;
+    --warningbox-background: #fad5a5;
+    --warningbox-text: #333;
+    --dangerbox-background: #f89a7d;
+    --dangerbox-text: #333;
+}
+
+h2, h3, h4, h5 {
+    margin-top: 0.5rem !important;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -77,9 +91,81 @@ img[src*='#center'] {
 
 /* The "Up^" marker in the Logo Table of Commands */
 
-table.cmdref span.table-up {
+table.cmdref .table-up {
     float: right;
+    padding-left: 20px;
 }
-table.cmdref span.table-up:after {
+table.cmdref .table-up:after {
     content: ' ^';
+}
+
+#tagcloud {
+    width: 100%;
+    height: 300px;
+}
+
+div.turtletalk table, div.turtletalk tbody, div.turtletalk tr, div.turtletalk td, div.turtletalk th {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    empty-cells: hide !important;
+    max-width: 700px;
+}
+
+/* Accordions */
+.card-header {
+    padding: .25rem 1.25rem !important;
+}
+.card-header > a {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.card-header > a[aria-expanded="true"]:before {
+    content: "\25be";
+    padding-right: 5px;
+}
+.card-header > a[aria-expanded="false"]:before {
+    content: "\25b8";
+    padding-right: 5px;
+}
+
+/* Boxes */
+
+.box {
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 0 20px;
+  display: flex;
+}
+
+.box.info {
+    background-color: var(--infobox-background);
+    color: var(--infobox-text);
+}
+.box.info:before {
+    font: 3em 'Font Awesome 5 Free';
+    content: "\f4ad";
+    padding-right: 10px;
+}
+.box.warning {
+    background-color: var(--warningbox-background);
+    color: var(--warningbox-text);
+}
+.box.warning:before {
+    font: bold 3em 'Font Awesome 5 Free';
+    content: "\f071";
+    padding-right: 10px;
+    color: red;
+}
+.box.danger {
+    background-color: var(--dangerbox-background);
+    color: var(--dangerbox-text);
+}
+.box.danger:before {
+    font: bold 3em 'Font Awesome 5 Free';
+    content: "\f1e2";
+    padding-right: 10px;
 }
