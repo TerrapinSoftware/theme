@@ -19,12 +19,10 @@ layout: base
     </div>
     <div id="splitter" class="d-none d-sm-block"></div>
     <div id="contents">
-        <div class="col-12">
-            {% include toc.html %}
-            <!-- CONTENT BGN -->
-            {{ content }}
-            <!-- CONTENT END -->
-        </div>
+        {% include toc.html %}
+        <!-- CONTENT BGN -->
+        {{ content }}
+        <!-- CONTENT END -->
     </div>
 </div>
 <div class="footer">

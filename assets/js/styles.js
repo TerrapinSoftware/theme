@@ -45,9 +45,12 @@ $(document).ready(function () {
     });
     // Send a Verified event if there is no verification
     if (!window.verifyToken)
-        $(document).trigger("verified");
+        $(window).trigger("verified");
 });
-$(document).on("verified", function() {
-    // Set the height of a PDF iframe
-    $("iframe.pdf").height($("#splitter").outerHeight());
+$(window).on("verified resize", function() {
+    $("iframe.pdf")
+        // Set the height of a PDF iframe
+        .height($("#splitter").height())
+        // we want full width
+        .parent().css({padding: 0, overflow: "hidden"});
 });

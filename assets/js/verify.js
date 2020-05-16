@@ -12,7 +12,7 @@ function verifyToken() {
                     if (path[0] === data.sku) {
                         $("#name").text(data.name);
                         $(".wrapper").show();
-                        $(document).trigger("verified");
+                        $(window).trigger("verified");
                         return;
                     }
                 }
