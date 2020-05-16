@@ -1,0 +1,35 @@
+body {
+    --ini_text: #333;
+    --ini_background: #fff;
+    /*  border color */
+    --border: #ccc;
+
+    /*  links */
+    --link_color: Blue;
+    --link_hover_color: rgba(0, 0, 255, 0.397);
+
+    /*  Table of Contents */
+    --toc_background: #f8f9fa;
+    --toc_text: #888;
+    --toc_text_hover: #0056b3;   /*  same as .btn-link:hover */
+
+    /*  header */
+    --hdr_background: #eee;
+    --hdr_border: #ccc;
+    --hdr_color: #333;
+    /*  footer */
+    --ftr_background: var(--hdr_background);
+    --ftr_border: var(--hdr_border);
+    --ftr_color: var(--hdr_color);
+
+    /*  sidebar */
+    --sb_background: #f8f9fa;
+    --sb_text: var(--ini_text);
+    --sb_link_: var(--ini_text);
+    --sb_link_hover: #1de800;
+    --sb_text_size: 0.8rem;
+
+    /*  splitter */
+    --splitter_background: #eee;
+    --splitter_border: #ccc;
+}

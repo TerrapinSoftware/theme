@@ -16,7 +16,7 @@ Page defaults (see also _config.yml):
 | `toc:` | Display a Table of Contents (default: `true`)
 | `sidebar:` | Sidebar settings, followed by (with two extra spaces):
 | `file:` | Name of sidebar file (must exist!, default: `_sidebar.md`)
-| `width:`  | Sidebar width, (default: `250px`)
+| `width:`  | Sidebar width, (default: 250 pixels)
 
 On a page level, you can also add scripts:
 

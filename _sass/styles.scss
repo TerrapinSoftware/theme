@@ -2,8 +2,8 @@ html,
 body {
   height: 100%;
   margin: 0;
-  background-color: $ini_background !important;
-  color: $ini_text !important;
+  background-color: var(--ini_background) !important;
+  color: var(--ini_text) !important;
   font-family: Montserrat, sans-serif !important;
   font-size: 11pt !important;
   line-height: 1.5 !important;
@@ -26,10 +26,10 @@ $header_height: 55px;
 .header {
   height: $header_height;
   display: flex;
-  background-color: $hdr_background;
-  color: $hdr_color;
+  background-color: var(--hdr_background);
+  color: var(--hdr_color);
   white-space: nowrap;
-  border-bottom: 1px solid $hdr_border;
+  border-bottom: 1px solid var(--hdr_border);
   img {
     flex: 0;
     margin: 2px 10px;
@@ -59,10 +59,10 @@ $header_height: 55px;
   }
 }
 .footer {
-  background-color: $ftr_background;
-  color: $ftr_color;
+  background-color: var(--ftr_background);
+  color: var(--ftr_color);
   white-space: nowrap;
-  border-top: 1px solid $hdr_border;
+  border-top: 1px solid var(--hdr_border);
   padding: 2px 10px;
   font-size: 0.8em;
   text-align: center;
@@ -97,17 +97,17 @@ $header_height: 55px;
 }
 
 a {
-  color: $link_color;
+  color: var(--link_color);
   &:hover {
-    color: $link_hover_color;
+    color: var(--link_hover_color);
     text-decoration: none;
   }
 }
 
 #splitter {
-  background-color: $splitter_background;
-  border-left: 1px solid $splitter_border;
-  border-right: 1px solid $splitter_border;
+  background-color: var(--splitter_background);
+  border-left: 1px solid var(--splitter_border);
+  border-right: 1px solid var(--splitter_border);
   cursor: col-resize;
 }
 
@@ -116,26 +116,26 @@ a {
 }
 
 #sidebar {
-  background-color: $sb_background;
-  color: $sb_text;
+  background-color: var(--sb_background);
+  color: var(--sb_text);
   padding: 10px;
-  font-size: $sb_text_size;
+  font-size: var(--sb_text_size);
   * {
     text-overflow: ellipsis;
     overflow: hidden;
   }
   h1,
   h2 {
-    font-size: $sb_text_size * 2;
+    font-size: calc(var(--sb_text_size) * 2);
   }
   h3 {
-    font-size: $sb_text_size * 1.5;
+    font-size: calc(var(--sb_text_size) * 1.5);
   }
   h4 {
-    font-size: $sb_text_size * 1.1;
+    font-size: calc(var(--sb_text_size) * 1.1);
   }
   h5 {
-    font-size: $sb_text_size;
+    font-size: var(--sb_text_size);
   }
   ul {
     padding-inline-start: 5px;
@@ -170,9 +170,9 @@ a {
     padding: 0 10px;
     list-style: none;
     & > li > a {
-      color: $toc_text;
+      color: var(--toc_text);
       &:hover {
-        color: $toc_text_hover;
+        color: var(--toc_text_hover);
         text-decoration: none;
       }
     }
@@ -181,7 +181,7 @@ a {
 
 .pdf {
   width: 100%;
-//  height: calc(100vh - $header_height); js does this for us
+//  height: calc(100vh - var(--header_height)); js does this for us
   border: none;
 }
 

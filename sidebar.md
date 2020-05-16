@@ -1,7 +1,7 @@
 ---
 layout: sidebar
 sidebar:
-  width: 150px
+  width: 150
 ---
 
 # Sidebar Test

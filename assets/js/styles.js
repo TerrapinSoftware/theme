@@ -15,7 +15,7 @@ $(document).ready(function () {
     // Set up the splitter in case we have a sidebar layout
     // That layout includes jquery-splitter.js and defines sidebar_width
     if (window.Split) {
-        $(".content").css("grid-template-columns", sidebar_width + " 7px auto");
+        $(".content").css("grid-template-columns", sidebar_width + "px 7px auto");
         // since the inner div has absolute positioning
         $("#sidebar>div").width(sidebar_width - 20);    // padding of sidebar
         Split({

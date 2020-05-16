@@ -3,7 +3,7 @@ layout: base
 ---
 
 {% capture sidebar %}{% include_relative {{ page.sidebar.file }} %}{% endcapture %}
-<script>var sidebar_width = "{{ page.sidebar.width }}";</script>
+<script>var sidebar_width = {{ page.sidebar.width }};</script>
 <div class="header">
     <a href="https://www.terrapinlogo.com" title="Visit Terrapin" target="_blank"><img src="/assets/img/terrapin_logo.png" /></a>
     <div id="title"><div>{{ site.title }}</div></div>

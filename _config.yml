@@ -15,7 +15,7 @@ defaults:
       # sidebar settings
       sidebar: 
         file: _sidebar.md
-        width: 250px
+        width: 250
 
 exclude:
   - README.md
