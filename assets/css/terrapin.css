@@ -117,9 +117,7 @@ div.turtletalk table, div.turtletalk tbody, div.turtletalk tr, div.turtletalk td
     padding: .25rem 1.25rem !important;
 }
 .card-header > a {
-    font-weight: bold;
-    font-size: 1.1em;
-    color: #333;
+    color: var(--text) !important;
 }
 
 .card-header > a[aria-expanded="true"]:before {

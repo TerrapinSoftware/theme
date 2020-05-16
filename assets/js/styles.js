@@ -15,9 +15,10 @@ $(document).ready(function () {
     // Set up the splitter in case we have a sidebar layout
     // That layout includes jquery-splitter.js and defines sidebar_width
     if (window.Split) {
+        var padding = 2 * parseInt($("#sidebar>.fix").css("padding"));
         $(".content").css("grid-template-columns", sidebar_width + "px 7px auto");
         // since the inner div has absolute positioning
-        $("#sidebar>div").width(sidebar_width - 20);    // padding of sidebar
+        $("#sidebar>.fix").width(sidebar_width - padding);
         Split({
             minSize: 0,
             columnGutters: [{
@@ -26,7 +27,7 @@ $(document).ready(function () {
             }],
             onDrag: function() {
                 // since the inner div has absolute positioning
-                $("#sidebar>div").width($("#sidebar").width());
+                $("#sidebar>.fix").width($("#sidebar").width() - padding);
             }
         });
     }

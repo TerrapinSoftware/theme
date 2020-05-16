@@ -5,7 +5,7 @@ body {
   background-color: var(--background) !important;
   color: var(--text) !important;
   font: var(--font) !important;
-  line-height: 1.5 !important;
+  line-height: 1.5rem !important;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -67,9 +67,9 @@ blockquote {
 }
 .content {
   flex: 1;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   display: grid;
+  grid-template-rows: 100%;
   // Widths of sidebar and splitter, also set by styles.js
   // grid-template-columns: 250px 7px auto;
 }
@@ -114,11 +114,9 @@ hr {
   cursor: col-resize;
 }
 
-.fix {
-  position: absolute;
-}
-
 #sidebar {
+  overflow-y: auto;
+  line-height: 1rem;
   background-color: var(--sb_background);
   color: var(--sb_text);
   padding: 10px;
@@ -170,11 +168,12 @@ hr {
 #contents {
   margin-left: 0;
   max-width: 1100px;
+  overflow-y: auto;
 }
 
 .toc {
   float: right;
-  margin: 0 0 1.4em 1.4em;
+  margin: 0 -15px 1.4em 1.4em;
   width: 20em;
   background-color: var(--toc_background);
   color: var(--toc_text);

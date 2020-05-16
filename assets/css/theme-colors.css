@@ -5,7 +5,7 @@ body {
     /*  border color */
     --border: 1px solid #ccc;
     /* horizontal line */
-    --hr_border: inherit;
+    --hr_border: 1px solid rgba(0, 0, 0, 0.1);
 
     /*  links */
     --link_text: Blue;
@@ -37,7 +37,7 @@ body {
     --sb_link_hover_background: inherit;
     --sb_link_hover_decoration: var(--link_hover_decoration);
     --sb_link_hover_text: var(--link_hover_text);
-    --sb_hr_border: inherit;
+    --sb_hr_border: var(--hr_border);
     --sb_text_size: 0.8rem;
 
     /*  splitter */

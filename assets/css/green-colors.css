@@ -5,12 +5,12 @@ body {
     /*  border color */
     --border: 1px solid #ccc;
     /* horizontal line */
-    --hr_border: inherit;
+    --hr_border: ;
 
     /*  links */
     --link_color: Blue;
     --link_hover_color: rgba(0, 0, 255, 0.397);
-    --link_hover_background: inherit;
+    --link_hover_background: inerit;
     --link_hover_decoration: none;
 
     /*  Table of Contents */
