@@ -42,16 +42,16 @@ blockquote {
   }
   #userinfo {
     flex: 0;
+    font-size: 0.6em;
     line-height: var(--hdr-height);
     // welcome message
     #welcome {
       display: inline-block;
-      font-size: 0.8em;
       font-style: italic;
       text-align: right;
    }
     button {
-      font-size: 0.7em;
+      font-size: 0.8em;
       margin-left: 10px;
     }
   }
