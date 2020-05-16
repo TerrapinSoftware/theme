@@ -25,6 +25,12 @@ scripts:
   - my_script.js
   - another_script.js
 ```
+## Display Options
+
+For each page URL, you can hide the header, footer, the TOC, or the sidebar, by using the "?hide=" query. This query takes a comma-separated list of the parts to hide. If you, for example, want the bare page content without any decoration,
+use this query parameter:
+
+    ?hide=header,footer,toc,sidebar
 
 ## Assets
 
@@ -66,7 +72,7 @@ Your local `Gemfile` (which is not checked in) looks like this:
     source "https://rubygems.org"
     gem 'github-pages', group: :jekyll_plugins
 
-## Using the Theme
+## Using the Theme Locally
 
 You need to create two different config files for Jekyll. In `_config.yml`, add this line:
 

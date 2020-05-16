@@ -179,18 +179,15 @@ a {
   }
 }
 
-.shadow {
-  -webkit-box-shadow: 10px 10px 13px 0px #ddd;
-  -moz-box-shadow: 10px 10px 13px 0px #ddd;
-  box-shadow: 10px 10px 13px 0px #ddd;
-}
-
 .pdf {
   width: 100%;
 //  height: calc(100vh - $header_height); js does this for us
   border: none;
 }
 
-#login-form #code {
-  text-transform: uppercase;
+#login-form {
+  width: 100%;
+  #code {
+    text-transform: uppercase;
+  }
 }

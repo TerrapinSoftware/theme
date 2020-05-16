@@ -1,10 +1,23 @@
 $(document).ready(function () {
+    // Check if we want to hide header, footer, etc
+    var q = new URLSearchParams(location.search);
+    var s = (q.get("hide") || "").split(",");
+    if (s.includes("header"))
+        $(".header").remove();
+    if (s.includes("footer"))
+        $(".footer").remove();
+    if (s.includes("toc"))
+        $(".toc").remove();
+    if (s.includes("sidebar")) {
+        delete window.Split;
+        $("#sidebar").remove();
+    }
     // Set up the splitter in case we have a sidebar layout
     // That layout includes jquery-splitter.js and defines sidebar_width
     if (window.Split) {
         $(".content").css("grid-template-columns", sidebar_width + " 7px auto");
         // since the inner div has absolute positioning
-        $("#sidebar>div").width($("#sidebar").width());
+        $("#sidebar>div").width(sidebar_width);
         Split({
             minSize: 0,
             columnGutters: [{
