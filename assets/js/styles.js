@@ -17,7 +17,7 @@ $(document).ready(function () {
     if (window.Split) {
         $(".content").css("grid-template-columns", sidebar_width + " 7px auto");
         // since the inner div has absolute positioning
-        $("#sidebar>div").width(sidebar_width);
+        $("#sidebar>div").width(sidebar_width - 20);    // padding of sidebar
         Split({
             minSize: 0,
             columnGutters: [{
