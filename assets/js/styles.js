@@ -3,32 +3,28 @@ $(document).ready(function () {
     var q = new URLSearchParams(location.search);
     var s = (q.get("hide") || "").split(",");
     if (s.includes("header"))
-        $(".header").remove();
+        $("#content-header").remove();
     if (s.includes("footer"))
-        $(".footer").remove();
+        $("#content-footer").remove();
     if (s.includes("toc"))
         $(".toc").remove();
     if (s.includes("sidebar")) {
         delete window.Split;
-        $("#sidebar").remove();
+        $("#content-sidebar").remove();
     }
     // Set up the splitter in case we have a sidebar layout
     // That layout includes jquery-splitter.js and defines sidebar_width
     if (window.Split) {
-        var padding = 2 * parseInt($("#sidebar>.fix").css("padding"));
-        $(".content").css("grid-template-columns", sidebar_width + "px 7px auto");
+//        var padding = 2 * parseInt($(".>.fix").css("padding"));
+        $("#content-main").css("grid-template-columns", sidebar_width + "px 7px auto");
         // since the inner div has absolute positioning
-        $("#sidebar>.fix").width(sidebar_width - padding);
+//        $("#content-sidebar>.fix").width(sidebar_width - padding);
         Split({
             minSize: 0,
             columnGutters: [{
                 track: 1,
-                element: document.querySelector('#splitter'),
-            }],
-            onDrag: function() {
-                // since the inner div has absolute positioning
-                $("#sidebar>.fix").width($("#sidebar").width() - padding);
-            }
+                element: document.querySelector('#content-splitter'),
+            }]
         });
     }
     /**
@@ -50,7 +46,7 @@ $(document).ready(function () {
 $(window).on("verified resize", function() {
     $("iframe.pdf")
         // Set the height of a PDF iframe
-        .height($("#splitter").height())
+        .height($("#content-splitter").height())
         // we want full width
         .parent().css({padding: 0, overflow: "hidden"});
 });
