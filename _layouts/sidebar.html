@@ -6,11 +6,6 @@ layout: base
 <script>var sidebar_width = {{ page.sidebar.width }};</script>
 <div id="content-header">
     <a href="https://www.terrapinlogo.com" title="Visit Terrapin" target="_blank"><img src="/assets/img/terrapin_logo.png" /></a>
-    <div>
-        <div id="title">{{ site.title }}</div>
-        <button class="toggle d-sm-none btn btn-sm btn-outline-dark" type="button" data-toggle="collapse"
-        data-target="#content-sidebar" aria-expanded="false" aria-controls="content-sidebar">Sidebar</button>
-    </div>
     {% if page.verify %}
     <div id="userinfo">
         <div id="welcome">Welcome, <span id="name"></span>!</div><button id="logout" class="btn btn-sm btn-outline-dark">Log Out</button>
@@ -19,14 +14,17 @@ layout: base
 </div>
 <!-- MAIN BGN -->
 <div id="content-main">
-    <div id="content-sidebar" class="d-sm-block collapse">
-        <div>{{ sidebar | markdownify }}</div>
-        
+    <div id="content-sidebar" class="d-sm-block">
+        <button class="toggle btn btn-link btn-sm d-sm-none" type="button" data-toggle="collapse"
+            data-target="#sb-collapse" aria-expanded="false" aria-controls="sb-collapse">
+            Sidebar
+        </button>
+        <div id="sb-collapse" class="collapse">{{ sidebar | markdownify }}</div> 
     </div>
     <div id="content-splitter" class="d-none d-sm-block"></div>
+        {% include toc.html %}
     <div id="content-right">
         <div class="inner">
-        {% include toc.html %}
         <!-- CONTENT BGN -->
         {{ content }}
         <!-- CONTENT END -->

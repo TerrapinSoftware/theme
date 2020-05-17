@@ -44,6 +44,11 @@ $(document).ready(function () {
         $(window).trigger("verified");
 });
 $(window).on("verified resize", function() {
+    var content = $("#content-right")[0];
+    if (content) {
+        var scrollbarWidth = (content.offsetWidth - content.clientWidth);
+        $(".toc").css("right", scrollbarWidth);
+    }
     $("iframe.pdf")
         // Set the height of a PDF iframe
         .height($("#content-splitter").height())

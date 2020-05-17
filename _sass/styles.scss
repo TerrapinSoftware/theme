@@ -79,7 +79,7 @@ blockquote {
 
 a {
   color: var(--link_text) !important;
-  background: var(link_hover_background) !important;
+  background: var(--link_hover_background) !important;
   &:hover {
     color: var(--link_hover_text) !important;
     text-decoration: var(--link_hover_decoration) !important;
@@ -105,6 +105,9 @@ hr {
   color: var(--sb_text);
   padding: 0 10px;
   font-size: var(--sb_text_size);
+  button {
+    text-align: left;
+  }
   * {
     direction: ltr;
     text-overflow: ellipsis;
@@ -150,13 +153,15 @@ hr {
 #content-right {
   margin-left: 0;
   overflow-y: auto;
-  padding: 0 15px;
-  height: 100%;
   position: relative;
+  height: 100%;
   .inner {
+    width: 100%;
     max-width: 1100px;
     position: absolute;
     top: 0;
+    left: 0;
+    padding: 0 15px;
     overflow-x: hidden;
   }
 }
@@ -172,20 +177,26 @@ hr {
     padding-right: 5px;
   }
 }
+button.toggle {
+  font-size: 0.7rem;
+  color: inherit;
+  text-decoration: none !important;
+  width: 100%;
+}
 
 .toc {
-  float: right;
-  margin: 0 0 1.4em 1.4em;
-  width: 20em;
+  position: absolute;
+  right: 0;
   background-color: var(--toc_background);
   color: var(--toc_text);
   border-left: var(--toc_border);
-  border-right: var(--toc_border);
   border-bottom: var(--toc_border);
+  z-index: 1000;
   button {
-    width: 100%;
-    color: inherit;
-    text-decoration: none !important;
+    text-align: right;
+  }
+  #toc-collapse {
+    width: 20em;
   }
   ul {
     font-size: 0.9em;
@@ -229,6 +240,19 @@ hr {
   #content-sidebar {
     direction: ltr;
     border-bottom: var(--border);
+    border-right: var(--border);
+    position: absolute;
+    left: 0;
+    z-index: 1000;
+  }
+}
+
+@media (min-width: 576px) {
+  #content-sidebar {
+    padding-top: 10px;
+  }
+  #sb-collapse {
+    display: block !important;
   }
 }
 
