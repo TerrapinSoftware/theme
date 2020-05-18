@@ -13,12 +13,9 @@ $(document).ready(function () {
         $("#content-sidebar").remove();
     }
     // Set up the splitter in case we have a sidebar layout
-    // That layout includes jquery-splitter.js and defines sidebar_width
+    // That layout includes $-splitter.js and defines sidebar_width
     if (window.Split) {
-//        var padding = 2 * parseInt($(".>.fix").css("padding"));
         $("#content-main").css("grid-template-columns", sidebar_width + "px 7px auto");
-        // since the inner div has absolute positioning
-//        $("#content-sidebar>.fix").width(sidebar_width - padding);
         Split({
             minSize: 0,
             columnGutters: [{
@@ -55,3 +52,68 @@ $(window).on("verified resize", function() {
         // we want full width
         .parent().css({padding: 0, overflow: "hidden"});
 });
+
+/**
+ * <iframe> support
+ * 
+ * If a page displays in an iframe, the page posts the following messages
+ * to the embedding parent:
+ * 
+ * { cmd: "url", data: location.href } posted if ?history is set
+ * { cmd: "height", data: $("body").outerHeight() } the total height of the page
+ * { cmd: "link", data: link } if a link is clicked, the parent must react
+ * { cmd: "pageclick", data: []} if the page was clicked (for activation responses)
+ * 
+ */
+(function () {
+    $(document).ready(_ => {
+       // post the current URL to a parent if history is not present
+        let params = new URLSearchParams(location.search);
+        if (params.get("history") !== true && window.parent)
+            window.parent.postMessage({ cmd: "url", data: location.href }, '*');
+
+        // tell parent the height whenever the height of the doc changhes
+        if (window.parent) {
+            var elem = $(".content");
+            var id = 0;
+            $(window).on("resize", function() {
+                // but with a short delay to avoid flicker
+                if (id)
+                    clearTimeout(id);
+                id = setTimeout(function() {
+                    window.parent.postMessage({ cmd: "height", data: elem.outerHeight() }, "*");
+                }, 200);
+            });
+            $(window).trigger("resize");
+        }
+
+        $("a").click(function (e) {
+            let link = $(this).prop("href");
+            const url = new URL(link);
+            if ((url.hostname !== location.host) && window.parent)
+                // make the parent change the page (security issue)
+                // note that Magento also needs to act!
+                window.parent.postMessage({ cmd: "link", data: link }, "*");
+            else if (location.pathname !== url.pathname || !url.hash)
+                location.href = url.pathname + url.search + url.hash;
+            else {
+                // Must handle directly because of CORS
+                let elem = $(url.hash);
+                if (elem.length) {
+                    elem[0].scrollIntoView();
+                    window.parent.postMessage({ cmd: "link", data: link }, "*");
+                }
+            }
+            e.preventDefault();
+        });
+        // send generic clicks to Logo so it can activate the panel
+        $(document).on("click", function(ev) {
+            try {
+                if (window.parent)
+                    window.parent.postMessage({ cmd: "pageclick", data: []}, "*");
+            }
+            catch (e) { }
+        });
+    });
+})();
+
