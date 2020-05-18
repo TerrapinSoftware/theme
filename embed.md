@@ -19,7 +19,9 @@ $(document).ready(function() {
                 $("#test").height(data.data);
                 break;
             case "link":
-                $("#test").attr("src", data.data);
+                var url = new URL(data.data);
+                url.searchParams.append("hide", "header,footer");
+                $("#test").attr("src", url);
                 break;
         }
     });
