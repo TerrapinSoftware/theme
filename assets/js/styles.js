@@ -64,8 +64,11 @@ $(window).on("verified resize", function() {
  * { cmd: "link", data: link } if a link is clicked, the parent must react
  * { cmd: "pageclick", data: []} if the page was clicked (for activation responses)
  * 
+ * Links posted to the parent are always absolute, with the current query string added.
  */
 (function () {
+    if (!window.parent)
+        return;
     $(document).ready(_ => {
        // post the current URL to a parent if history is not present
         let params = new URLSearchParams(location.search);
@@ -73,35 +76,39 @@ $(window).on("verified resize", function() {
             window.parent.postMessage({ cmd: "url", data: location.href }, '*');
 
         // tell parent the height whenever the height of the doc changhes
-        if (window.parent) {
-            var elem = $(".content");
-            var id = 0;
-            $(window).on("resize", function() {
-                // but with a short delay to avoid flicker
-                if (id)
-                    clearTimeout(id);
-                id = setTimeout(function() {
-                    window.parent.postMessage({ cmd: "height", data: elem.outerHeight() }, "*");
-                }, 200);
-            });
-            $(window).trigger("resize");
-        }
+        var elem = $(".content");
+        var id = 0;
+        $(window).on("resize", function() {
+            // but with a short delay to avoid flicker
+            if (id)
+                clearTimeout(id);
+            id = setTimeout(function() {
+                window.parent.postMessage({ cmd: "height", data: elem.outerHeight(true) }, "*");
+            }, 200);
+        });
+        $(window).trigger("resize");
 
         $("a").click(function (e) {
             let link = $(this).prop("href");
             const url = new URL(link);
-            if ((url.hostname !== location.host) && window.parent)
+            // Add our own query string
+            var s = new URLSearchParams(location.search);
+            s.forEach(function(value, key) {
+                url.searchParams.set(key, value);
+            });
+            if (url.host !== location.host)
                 // make the parent change the page (security issue)
                 // note that Magento also needs to act!
-                window.parent.postMessage({ cmd: "link", data: link }, "*");
+                window.parent.postMessage({ cmd: "link", data: url }, "*");
             else if (location.pathname !== url.pathname || !url.hash)
-                location.href = url.pathname + url.search + url.hash;
+                // Same host: we can handle that ourselves
+                location.href = url;
             else {
                 // Must handle directly because of CORS
                 let elem = $(url.hash);
                 if (elem.length) {
                     elem[0].scrollIntoView();
-                    window.parent.postMessage({ cmd: "link", data: link }, "*");
+                    window.parent.postMessage({ cmd: "link", data: url }, "*");
                 }
             }
             e.preventDefault();
