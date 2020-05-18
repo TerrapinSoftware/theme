@@ -5,13 +5,7 @@ layout: base
 {% capture sidebar %}{% include_relative {{ page.sidebar.file }} %}{% endcapture %}
 <script>var sidebar_width = {{ page.sidebar.width }};</script>
 <div id="content-header">
-    <a href="https://www.terrapinlogo.com" title="Visit Terrapin" target="_blank"><img src="/assets/img/terrapin_logo.png" /></a>
-    <div id="title">{{ site.title }}</div>
-    {% if page.verify %}
-    <div id="userinfo">
-        <div id="welcome">Welcome, <span id="name"></span>!</div><button id="logout" class="btn btn-sm btn-outline-dark">Log Out</button>
-    </div>
-    {% endif %}
+    {% include sidebar-header.html %}
 </div>
 <!-- MAIN BGN -->
 <div id="content-main">
@@ -34,5 +28,5 @@ layout: base
 </div>
 <!-- MAIN END -->
 <div id="content-footer">
-    {{page.title}}
+    {% include sidebar-footer.html %}
 </div>
