@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../resources"
+		},
+		{
+			"path": "../pub"
+		}
+	],
+	"settings": {}
+}

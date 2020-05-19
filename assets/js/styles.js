@@ -6,6 +6,8 @@ $(document).ready(function () {
         $("#content-header").remove();
     if (s.includes("footer"))
         $("#content-footer").remove();
+    if (s.includes("search"))
+        $("#sidebar-search").remove();
     if (s.includes("toc"))
         $(".toc").remove();
     if (s.includes("sidebar")) {

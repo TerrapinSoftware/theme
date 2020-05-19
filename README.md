@@ -4,9 +4,11 @@ This repo hosts the Terrapin theme for the documentation servers.
 
 The following layouts are available. For each layout, you can define a file `_includes/head-XXX.html`, where `XXX` is the layout name. This file will be included in the `<head>` section of the HTML file.
 
-* `base` - the base leyout. The body is empty and will be replaced by the rendered file.
+* `base` - the base layout. The body is empty and will be replaced by the rendered file.
 * `default` - the default layout. The rendered file will be wrapped into a `<div class="container">` tag.
 * `sidebar` - the sidebar layout. 
+
+The sidebar layout also lets you define the contents of the header and footer in the files `_includes/sidebar-header.html` and `_includes/sidebar-footer.html`.
 
 Page defaults (see also _config.yml):
 
@@ -25,10 +27,17 @@ scripts:
   - my_script.js
   - another_script.js
 ```
+
+## Google Search
+
+If you want to use Google Search on a site, you need to create a search engine at Google and add a tag to the `xxx-head.html` include file. Currently, the "resources" site does this. To add the search field, include
+
+    {%include searchfield.html %}
+
+
 ## Display Options
 
-For each page URL, you can hide the header, footer, the TOC, or the sidebar, by using the "?hide=" query. This query takes a comma-separated list of the parts to hide. If you, for example, want the bare page content without any decoration,
-use this query parameter:
+For each page URL, you can hide the header, footer, the TOC, the sidebar, or the search field, by using the "?hide=" query. This query takes a comma-separated list of the parts to hide (header, footer, toc, sidebar, search). If you, for example, want the bare page content without any decoration, use this query parameter:
 
     ?hide=header,footer,toc,sidebar
 
@@ -37,6 +46,8 @@ use this query parameter:
 In the `/assets/img` folder, we have the `favicon.ico` and the `terrapin_logo.png` files.
 
 In the `/assets/css` folder, we have the `styles.scss` and the `terrapin.css` files. The former defines colors and additional styling, and the latter defines extensions to the markdown. That file can also be added to VSCode as extra markdown styles.
+
+## Google Search
 
 ## Log-In Pages
 

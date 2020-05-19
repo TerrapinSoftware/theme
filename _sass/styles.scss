@@ -269,3 +269,40 @@ button.toggle {
     display: none !important;
   }
 }
+
+// An attempt to style the Google Search engine search box
+
+.cse .gsc-control-cse, .gsc-control-cse {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background-color: inherit !important;
+    font-family: inherit !important;
+}
+table.gsc-search-box {
+    margin-bottom: 0 !important;
+}
+table.gsc-search-box td {
+    border: 0 !important;
+    padding: 0 !important;
+}
+.gsc-input-box {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.gsc-input {
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: inherit !important;
+  padding: 3px 5px !important;
+  height: inherit !important;
+}
+.gsc-input td:last-child {
+    display: none;
+}
+table.gsc-search-box button {
+  padding: 2px 7px 3px 7px;
+  margin: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
