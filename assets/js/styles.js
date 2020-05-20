@@ -67,7 +67,7 @@ $(window).on("verified resize", function() {
  * Links posted to the parent are always absolute, with the current query string added.
  */
 (function () {
-    if (!window.parent)
+    if (!window.parent || window === window.parent)
         return;
     $(document).ready(_ => {
        // post the current URL to a parent if history is not present
