@@ -2,18 +2,10 @@ $(document).ready(function () {
     // Check if we want to hide header, footer, etc
     var q = new URLSearchParams(location.search);
     var s = (q.get("hide") || "").split(",");
-    if (s.includes("header"))
-        $("#content-header").remove();
-    if (s.includes("footer"))
-        $("#content-footer").remove();
-    if (s.includes("search"))
-        $("#sidebar-search").remove();
-    if (s.includes("toc"))
-        $(".toc").remove();
-    if (s.includes("sidebar")) {
+    for (var el of s)
+        $(".hide-" + el).hide();
+    if (s.includes("sidebar"))
         delete window.Split;
-        $("#content-sidebar").remove();
-    }
     // Set up the splitter in case we have a sidebar layout
     // That layout includes $-splitter.js and defines sidebar_width
     if (window.Split) {

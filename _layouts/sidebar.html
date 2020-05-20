@@ -4,19 +4,19 @@ layout: base
 
 {% capture sidebar %}{% include_relative {{ page.sidebar.file }} %}{% endcapture %}
 <script>var sidebar_width = {{ page.sidebar.width }};</script>
-<div id="content-header">
+<div id="content-header" class="hide-header hide-embed">
     {% include sidebar-header.html %}
 </div>
 <!-- MAIN BGN -->
 <div id="content-main">
-    <div id="content-sidebar" class="d-sm-block">
+    <div id="content-sidebar" class="d-sm-block hide-sidebar">
         <button class="toggle btn btn-link btn-sm d-sm-none" type="button" data-toggle="collapse"
             data-target="#sb-collapse" aria-expanded="false" aria-controls="sb-collapse">
             Sidebar
         </button>
         <div id="sb-collapse" class="collapse">{{ sidebar | markdownify }}</div> 
     </div>
-    <div id="content-splitter" class="d-none d-sm-block"></div>
+    <div id="content-splitter" class="d-none d-sm-block hide-sidebar"></div>
         {% include toc.html %}
     <div id="content-right">
         <div class="content">
@@ -27,6 +27,6 @@ layout: base
     </div>
 </div>
 <!-- MAIN END -->
-<div id="content-footer">
+<div id="content-footer" class="hide-footer hide-embed">
     {% include sidebar-footer.html %}
 </div>

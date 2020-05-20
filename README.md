@@ -37,9 +37,15 @@ If you want to use Google Search on a site, you need to create a search engine a
 
 ## Display Options
 
-For each page URL, you can hide the header, footer, the TOC, the sidebar, or the search field, by using the "?hide=" query. This query takes a comma-separated list of the parts to hide (header, footer, toc, sidebar, search). If you, for example, want the bare page content without any decoration, use this query parameter:
+The URL query option `hide` lets you hide several areas of a page. It takes a comma-separated list of areas to hide. Currently, this list includes `header`, `footer`, `sidebar`, `toc`, and `search` for the search field. Additionally, the value `embed` turns off header, footer, and the top part of the sidebar, where the Home link and the search field are located. If you, for example, want to get rid of the header and footer, use this query parameter:
 
-    ?hide=header,footer,toc,sidebar
+    ?hide=header,footer
+
+If you want to add your own parts of a page, just add a class named `hide-xxx` to that part of the HTML, where `xxx` is the name of the part. If you, for example, want to hide an area named `instructions`, use e.g. a `span` tag like this:
+
+```markdown
+<span class="hide-instructions">My instructions...
+```
 
 ## Assets
 
