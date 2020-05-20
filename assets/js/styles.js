@@ -36,10 +36,16 @@ $(document).ready(function () {
 });
 $(window).on("verified resize", function() {
     var content = $("#content-right")[0];
-    if (content) {
-        var scrollbarWidth = (content.offsetWidth - content.clientWidth);
-        $(".toc").css("right", scrollbarWidth);
+    var scrollbarWidth = 0;
+    if (content)
+        scrollbarWidth = content.offsetWidth - content.clientWidth;
+    else {
+        content = $(".wrapper")[0];
+        if (content)
+            scrollbarWidth = document.body.offsetWidth - content.clientWidth;
     }
+    $(".toc").css("right", scrollbarWidth);
+
     $("iframe.pdf")
         // Set the height of a PDF iframe
         .height($("#content-splitter").height())
