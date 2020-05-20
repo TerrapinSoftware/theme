@@ -93,7 +93,7 @@ $(window).on("verified resize", function() {
             if (url.host !== location.host)
                 // make the parent change the page (security issue)
                 // note that Magento also needs to act!
-                window.parent.postMessage({ cmd: "link", data: url }, "*");
+                window.parent.postMessage({ cmd: "link", data: url.toString() }, "*");
             else if (location.pathname !== url.pathname || !url.hash)
                 // Same host: we can handle that ourselves
                 location.href = url;
@@ -102,10 +102,11 @@ $(window).on("verified resize", function() {
                 let elem = $(url.hash);
                 if (elem.length) {
                     elem[0].scrollIntoView();
-                    window.parent.postMessage({ cmd: "link", data: url }, "*");
+                    window.parent.postMessage({ cmd: "link", data: url.toString() }, "*");
                 }
             }
             e.preventDefault();
+            e.stopPropagation();
         });
         // send generic clicks to Logo so it can activate the panel
         $(document).on("click", function(ev) {

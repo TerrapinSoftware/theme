@@ -19,7 +19,7 @@ $(document).ready(function() {
                 $("#test").height(data.data);
                 break;
             case "link":
-                $("#test").attr("src", data.data);
+                location.href = data.data;
                 break;
         }
     });
