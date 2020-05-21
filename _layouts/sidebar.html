@@ -7,13 +7,21 @@ layout: base
 <div id="content-header" class="hide-header hide-embed">
     {% include sidebar-header.html %}
 </div>
+<div id="button-bar">
+    <button class="toggle btn btn-link btn-sm d-sm-none" type="button" data-toggle="collapse"
+        data-target="#sb-collapse" aria-expanded="false" aria-controls="sb-collapse">
+        Sidebar
+    </button>
+    {% if page.toc != false %}
+    <button class="toggle btn btn-link btn-sm" type="button" data-toggle="collapse" style="float: right"
+        data-target="#toc-collapse" aria-expanded="false" aria-controls="toc-collapse">
+        Table of Contents
+    </button>
+    {% endif %}
+</div>
 <!-- MAIN BGN -->
 <div id="content-main">
     <div id="content-sidebar" class="d-sm-block hide-sidebar">
-        <button class="toggle btn btn-link btn-sm d-sm-none" type="button" data-toggle="collapse"
-            data-target="#sb-collapse" aria-expanded="false" aria-controls="sb-collapse">
-            Sidebar
-        </button>
         <div id="sb-collapse" class="collapse">{{ sidebar | markdownify }}</div> 
     </div>
     <div id="content-splitter" class="d-none d-sm-block hide-sidebar"></div>
