@@ -34,7 +34,7 @@ TerrapinSearch = {
      * Load the index file from the server.
      * @param {string} url 
      */
-    load: async function(url = "/assets/search.json") {
+    load: async function(url = "/assets/json/search.json") {
         if (!TerrapinSearch.json) {
             marked.use({ renderer: TerrapinSearch.renderer });
             try {

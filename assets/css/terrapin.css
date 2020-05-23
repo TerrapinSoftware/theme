@@ -32,6 +32,8 @@ table th {
 
 code {
     color: inherit !important;
+    font-size: 0.95em !important;
+    font-weight: bold;
 }
 
 .highlighter-rouge {
@@ -57,8 +59,9 @@ pre.highlight {
     font-size: 87.5% !important;
     display: block;
     white-space: pre;
-    padding: 0 5px;
+    padding: 5px;
     background-color: #e8ffe8;
+    line-height: 1.3rem;
 }
 .example strong {
     font-weight: normal;
@@ -136,7 +139,7 @@ div.turtletalk table, div.turtletalk tbody, div.turtletalk tr, div.turtletalk td
   border-radius: 4px;
   padding: 10px;
   margin: 0 20px;
-  display: flex;
+  display: block;
 }
 
 .box.info {
@@ -147,6 +150,7 @@ div.turtletalk table, div.turtletalk tbody, div.turtletalk tr, div.turtletalk td
     font: 3em 'Font Awesome 5 Free';
     content: "\f4ad";
     padding-right: 10px;
+    float: left;
 }
 .box.warning {
     background-color: var(--warningbox-background);
@@ -157,6 +161,7 @@ div.turtletalk table, div.turtletalk tbody, div.turtletalk tr, div.turtletalk td
     content: "\f071";
     padding-right: 10px;
     color: red;
+    float: left;
 }
 .box.danger {
     background-color: var(--dangerbox-background);
@@ -166,4 +171,5 @@ div.turtletalk table, div.turtletalk tbody, div.turtletalk tr, div.turtletalk td
     font: bold 3em 'Font Awesome 5 Free';
     content: "\f1e2";
     padding-right: 10px;
+    float: left;
 }
