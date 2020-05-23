@@ -48,4 +48,5 @@ body {
     --toc_link_hover_decoration: var(--link_hover_decoration);
     --toc_link_hover_text: var(--link_hover_text);
 
+    --search-found-background: #ffff13;
 }

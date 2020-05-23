@@ -57,7 +57,7 @@ pre.highlight {
     font-size: 87.5% !important;
     display: block;
     white-space: pre;
-    padding: 5px;
+    padding: 0 5px;
     background-color: #e8ffe8;
 }
 .example strong {

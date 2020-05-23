@@ -50,4 +50,5 @@ body {
     --toc_text: #333;
     --toc_border: var(--border);
 
+    --search-found-background: #ffffc6:
 }
