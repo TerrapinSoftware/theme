@@ -65,7 +65,7 @@ TerrapinSearch = {
                 continue;
             let finds = [];
             let s = page.content;
-            s.replace(re, function(match, offset) {
+            s.replace(re, function(match, m1, offset) {
                 // find start and end of line
                 let bgn = offset, end = offset;
                 while (bgn > 0 && s[bgn] != "\n")
