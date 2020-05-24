@@ -326,6 +326,7 @@ button.toggle {
   }
 }
 
-span.highlight {
+span.txt-hilite {
   background-color: var(--search-found-background);
+  padding: 2px;
 }
