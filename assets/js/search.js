@@ -56,7 +56,8 @@ TerrapinSearch = {
                     if (offset - bgn > 50)
                         prefix = "...", bgn = offset - 50;
                     let t = s.substring(bgn, end).trim();
-                    t = t.replace(re, '<span class="highlight">' + match + '</span>');
+                    // same class as in jquery.highlight.js
+                    t = t.replace(re, '<span class="txt-hilite">' + match + '</span>');
                     if (!finds.includes(t))
                         finds.push(prefix + t);
                 });
@@ -98,7 +99,7 @@ TerrapinSearch = {
         if (!found)
             return;
         found = JSON.parse(found);
-        $("#content-right").highlight(found.text, { ignoreCase: true, class: "found" });
+        $("#content-right").highlight(found.text);
         var s = found.found.replace("'", "\\'");
         var c = $("#content-right");
         while (s.length) {
@@ -110,7 +111,7 @@ TerrapinSearch = {
             // retry with 2 less characters
             s = s.substr(0, -2);
         }
-        $("span.highlight:first-child")[0].scrollIntoView();
+        $("span.txt-hilite:first-child")[0].scrollIntoView();
     },
 
     _getRegExp: function(text) {
