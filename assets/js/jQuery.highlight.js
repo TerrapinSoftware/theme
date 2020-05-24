@@ -1,72 +1,71 @@
-/**
- * highlight 1.0.0
- * Licensed under MIT
- *
- * Copyright (c) 2016 yjteam
- * http://yjteam.co.kr
- *
- * GitHub Repositories
- * https://github.com/yjseo29/highlight.js
- */
+/*
 
-if (typeof jQuery === 'undefined') {
-	throw new Error('JavaScript requires jQuery')
-}
+highlight v3  !! Modified by Jon Raasch (http://jonraasch.com) to fix IE6 bug !!
 
-+function ($) {
-	'use strict';
-	var version = $.fn.jquery.split(' ')[0].split('.')
-	if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1)) {
-		throw new Error('JavaScript requires jQuery version 1.9.1 or higher')
-	}
-}(jQuery);
+Highlights arbitrary terms.
 
-+function ($) {
-	$.fn.highlight = function (word, options) {
-		var option = $.extend({
-			background: "#ffff00",
-			color: "#000",
-			bold: false,
-			class: "",
-			ignoreCase: true,
-			wholeWord: true
-		}, options);
-		var findCnt = 0;
+<http://johannburkard.de/blog/programming/javascript/highlight-javascript-text-higlighting-jquery-plugin.html>
 
-		if(this.length == 0){
-			throw new Error('Node was not found')
-		}
+MIT license.
 
-		var $el = $('<span style="color:'+option.color+';"></span>');
-		if(option.bold){
-			$el.css("font-weight", "bold");
-		}
-		if(option.background != ""){
-			$el.css("background", option.background);
-		}
-		if(option.class != ""){
-			$el.addClass(option.class);
-		}
+Johann Burkard
+<http://johannburkard.de>
+<mailto:jb@eaio.com>
 
-		if(option.wholeWord){
-			word = "\\b"+escapeRegExp(word)+"\\b";
-		}
-		var re = new RegExp(word, option.ignoreCase == true ? 'gi':'g');
+*/
 
-		this.each(function() {
-			var content = $(this).html();
+jQuery.fn.highlight = function(pat) {
+ function innerHighlight(node, pat) {
+  var skip = 0;
+  if (node.nodeType == 3) {
+   var pos = node.data.toUpperCase().indexOf(pat);
+   if (pos >= 0) {
+    var spannode = document.createElement('span');
+    spannode.className = 'highlight';
+    var middlebit = node.splitText(pos);
+    var endbit = middlebit.splitText(pat.length);
+    var middleclone = middlebit.cloneNode(true);
+    spannode.appendChild(middleclone);
+    middlebit.parentNode.replaceChild(spannode, middlebit);
+    skip = 1;
+   }
+  }
+  else if (node.nodeType == 1 && node.childNodes && !/(script|style)/i.test(node.tagName)) {
+   for (var i = 0; i < node.childNodes.length; ++i) {
+    i += innerHighlight(node.childNodes[i], pat);
+   }
+  }
+  return skip;
+ }
+ return this.each(function() {
+  innerHighlight(this, pat.toUpperCase());
+ });
+};
 
-			$(this).html(content.replace(re, function(t){
-				findCnt++;
-				$el.text(t);
-				return $el.get(0).outerHTML;
-			}));
+jQuery.fn.removeHighlight = function() {
+ function newNormalize(node) {
+    for (var i = 0, children = node.childNodes, nodeCount = children.length; i < nodeCount; i++) {
+        var child = children[i];
+        if (child.nodeType == 1) {
+            newNormalize(child);
+            continue;
+        }
+        if (child.nodeType != 3) { continue; }
+        var next = child.nextSibling;
+        if (next == null || next.nodeType != 3) { continue; }
+        var combined_text = child.nodeValue + next.nodeValue;
+        new_node = node.ownerDocument.createTextNode(combined_text);
+        node.insertBefore(new_node, child);
+        node.removeChild(child);
+        node.removeChild(next);
+        i--;
+        nodeCount--;
+    }
+ }
 
-		});
-		return findCnt;
-
-		function escapeRegExp(string){
-			return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-	}
-}(jQuery);
+ return this.find("span.highlight").each(function() {
+    var thisParent = this.parentNode;
+    thisParent.replaceChild(this.firstChild, this);
+    newNormalize(thisParent);
+ }).end();
+};

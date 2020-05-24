@@ -8,6 +8,8 @@ defaults:
       path: ""      # an empty string here means all files in the project
       type: pages
     values:
+      # allow site search to reach this page, also enables the search field
+      search: true
       # do not verify logins
       verify: false
       # display a TOC on page

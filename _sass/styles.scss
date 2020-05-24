@@ -318,7 +318,7 @@ button.toggle {
     line-height: 1.3em;
     text-overflow: ellipsis;
     overflow: hidden;
-//    white-space: nowrap;
+    white-space: nowrap;
   }
   .modal-body {
     overflow-y: auto !important;
@@ -326,6 +326,6 @@ button.toggle {
   }
 }
 
-span.found {
+span.highlight {
   background-color: var(--search-found-background);
 }

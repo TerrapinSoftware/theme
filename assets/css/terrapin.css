@@ -113,6 +113,7 @@ div.turtletalk table, div.turtletalk tbody, div.turtletalk tr, div.turtletalk td
     padding: 0;
     empty-cells: hide !important;
     max-width: 700px;
+    font-size: 0;
 }
 
 /* Accordions */
