@@ -10,15 +10,17 @@ The following layouts are available. For each layout, you can define a file `_in
 
 The sidebar layout also lets you define the contents of the header and footer in the files `_includes/sidebar-header.html` and `_includes/sidebar-footer.html`.
 
-Page defaults (see also _config.yml):
+Page defaults (see also the _config.yml file in the `theme` repo):
 
 | Value | Description
 | ----- | -----------
 | `verify:` | Verify a page for a proper login (default: `false`)
 | `toc:` | Display a Table of Contents (default: `true`)
+| `search:` | Set to either `true` or `false` to include or exclude a page from search
+| `search_group:` | The search group, [see below](#search)
 | `sidebar:` | Sidebar settings, followed by (with two extra spaces):
-| `file:` | Name of sidebar file (must exist!, default: `_sidebar.md`)
-| `width:`  | Sidebar width, (default: 250 pixels)
+| &nbsp;&nbsp;`file:` | Name of sidebar file (must exist!, default: `_sidebar.md`)
+| &nbsp;&nbsp;`width:`  | Sidebar width, (default: 250 pixels)
 
 On a page level, you can also add scripts:
 
@@ -28,12 +30,29 @@ scripts:
   - another_script.js
 ```
 
-## Google Search
+## Search
 
-If you want to use Google Search on a site, you need to create a search engine at Google and add a tag to the `xxx-head.html` include file. Currently, the "resources" site does this. To add the search field, include
+There are two frontmatter options that control how a page is integrated into a site search:
 
-    {%include searchfield.html %}
+* `search: true|false` controls whether the page is searchable at all.
+* `search_group: name` sets the name of the search group.
 
+The latter option is especially powerful if you want the site search to be limited to a group of pages. For example, the online books have separate groups for each book so the search cannot go across books.
+
+The group name reflects the name of the search file, which contains a digest of all searchable pages in that group. The file name is `/assets/search/xxx.json`, where `xxx`is the group name. You need to create this file with the following content:
+
+```yaml
+---
+layout: null
+---
+{% include search-template.json %}
+```
+
+Then, include the search field into e.g. your sidebar file:
+
+    {% include searchfield.html %}
+
+The project configuration in `_config.yml` should declare the search options valid for all pages (see the _config.yml file in the theme folder for full information).
 
 ## Display Options
 
@@ -41,25 +60,23 @@ The URL query option `hide` lets you hide several areas of a page. It takes a co
 
     ?hide=header,footer
 
-If you want to add your own parts of a page, just add a class named `hide-xxx` to that part of the HTML, where `xxx` is the name of the part. If you, for example, want to hide an area named `instructions`, use e.g. a `span` tag like this:
+If you want to add your own parts of a page to hide, just add a class named `hide-xxx` to that part of the HTML, where `xxx` is the name of the part. If you, for example, want to hide an area named `instructions`, use e.g. a `span` tag like this:
 
 ```markdown
 <span class="hide-instructions">My instructions...
 ```
 
-## Assets
+## Other Assets
 
 In the `/assets/img` folder, we have the `favicon.ico` and the `terrapin_logo.png` files.
 
-In the `/assets/css` folder, we have the `styles.scss` and the `terrapin.css` files. The former defines colors and additional styling, and the latter defines extensions to the markdown. That file can also be added to VSCode as extra markdown styles.
-
-## Google Search
+In the `/assets/css` folder, we have the `theme-colors.css` and the `terrapin.css` files. The former defines colors, and the latter defines extensions to the markdown. That file can also be added to VSCode as extra markdown styles for a better preview of markdown text.
 
 ## Log-In Pages
 
 The assets for a log-in page are defined here as well. Use this template for a log-in page:
 
-```markdown
+```yaml
 ---
 title: Login
 layout: default
@@ -78,10 +95,13 @@ login-form:
 ---
 
 # ![](/assets/img/terrapin_logo.png) Your Title
------
+----
 
 {% include login-form.html %}
 ```
+
+# Techno-Babble
+
 ## Local Files
 
 Your local `Gemfile` (which is not checked in) looks like this:

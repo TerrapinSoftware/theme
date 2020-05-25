@@ -16,10 +16,9 @@
     <script src="/assets/js/jquery-3.4.1.slim.min.js"></script>
     <script src="/assets/js/popper-1.16.0.min.js"></script>
     <script src="/assets/js/bootstrap-4.4.1.min.js"></script>
-    {% if page.search != false %}
     <script src="/assets/js/search.js"></script>
+    <script>TerrapinSearch.group = "{{page.search_group}}";</script>
     <script src="/assets/js/jquery.highlight.js"></script>
-    {% endif %}    
     {% if page.layout == 'sidebar' %}
     <script src="/assets/js/jquery-splitter.js"></script>
     {% endif %}

@@ -7,23 +7,26 @@
  */
 TerrapinSearch = {
     json: null,
+    group: "",  // set by head.html
     /**
      * Load the index file from the server.
      * @param {string} url 
      */
-    load: async function(url = "/assets/json/search.json") {
-        if (!TerrapinSearch.json) {
+    load: async function() {
+        if (!this.group)
+            return false;
+        if (!this.json) {
             try {
-                let res = await fetch(url);
-                TerrapinSearch.json = await res.json();
-                for (let page of TerrapinSearch.json) {
+                let res = await fetch("/assets/search/" + this.group + ".json");
+                this.json = await res.json();
+                for (let page of this.json) {
                     if (page.content)
-                        page.content = TerrapinSearch.parse(page.content);
+                        page.content = this.parse(page.content);
                 }
                 return true;
             }
             catch (e) {
-                TerrapinSearch.json = [];
+                this.json = [];
                 return false;
             }
         }
@@ -33,14 +36,16 @@ TerrapinSearch = {
      * @param {string} text 
      */
     find: async function(text) {
-        if (!TerrapinSearch.json)
-            await TerrapinSearch.load();
+        if (!this.group)
+            return;
+        if (!this.json)
+            await this.load();
         let out = [];
         let reText = text.replace(/([\[\](){}.^$])/g, "\\$1");
         if (!reText.includes(" "))
             reText = "\\b" + reText + "\\b";    // word search
         let re = new RegExp(reText, "i");
-        for (let page of TerrapinSearch.json) {
+        for (let page of this.json) {
             if (!page.content)
                 continue;
             let finds = [];

@@ -1,0 +1,51 @@
+{% comment %}
+Include file that generate the search digest. Use it from within /assets/search/*.json.
+The group name is the file name where this code is included minus the '.json' extension.
+{% endcomment %}
+{% assign group = page.name|remove: '.json' %}
+{% capture nl %}
+{% endcapture %}
+[
+{%- for p in site.pages -%}
+    {% if p.search == true and p.search_group == group %}
+        {%- assign c = '' -%}
+        {%- if p.name contains '.md' %}
+            {%- assign c = p.content|markdownify -%}
+        {%- endif -%}
+        {%- if p.name contains '.html' %}
+            {%- assign c = p.content -%}
+        {%- endif -%}
+        {%- if c != '' -%}
+{ "title": {{p.title | jsonify }}, "url": {{p.url|jsonify}}, "content": {{c|
+replace: '<p>', "%%PB%%"|
+replace: '</p>', "%%PE%%"|
+replace: '<h1 ', "%%H%%<h1 "|
+replace: '<h1>', "%%H%%<h1>"|
+replace: '<h2 ', "%%H%%<h2 "|
+replace: '<h2>', "%%H%%<h2>"|
+replace: '<h3 ', "%%H%%<h3 "|
+replace: '<h3>', "%%H%%<h3>"|
+replace: '<h4 ', "%%H%%<h4 "|
+replace: '<h4>', "%%H%%<h4>"|
+replace: '<h5 ', "%%H%%<h5 "|
+replace: '<h5>', "%%H%%<h5>"|
+replace: '<br/>', "\n"|
+replace: '<br />', "\n"|
+strip_html|
+newline_to_br|
+normalize_whitespace|
+replace: '<br />', "\n"|
+replace: "\n ", "\n"|
+replace: "\n\n", "\n"|
+replace: "\n\n", "\n"|
+replace: "\n\n", "\n"|
+replace: "\n\n", "\n"|
+replace: "\n\n", "\n"|
+replace: "\n\n", "\n"|
+replace: "\n", nl|
+jsonify}} },
+        {%- endif -%}
+    {%- endif -%}
+{%- endfor -%}
+{ "end": ""}
+]
