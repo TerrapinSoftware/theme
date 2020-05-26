@@ -130,6 +130,14 @@ hr {
   border-left: 1px solid var(--splitter_border) !important;
   border-right: 1px solid var(--splitter_border) !important;
   cursor: col-resize;
+  &:before {
+    content: "|";
+    top: 50%;
+    position: absolute;
+    font-size: 1.5rem;
+    margin-left: -1px;
+    color: #888;
+  }
 }
 
 #content-sidebar {
