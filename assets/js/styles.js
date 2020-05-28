@@ -3,7 +3,7 @@ $(document).ready(function () {
     var q = new URLSearchParams(location.search);
     var s = (q.get("hide") || "").split(",");
     for (var el of s)
-        $(".hide-" + el).hide();
+        $(".hide-" + el).css("cssText", "display:none !important");
     if (s.includes("sidebar"))
         delete window.Split;
     // Set up the splitter in case we have a sidebar layout
@@ -46,7 +46,9 @@ $(window).on("verified resize", function() {
     }
     $(".toc").css("right", scrollbarWidth);
 
-    $("iframe.pdf")
+    let pdf = $("iframe.pdf");
+    if (pdf.length)
+      pdf
         // Set the height of a PDF iframe
         .height($("#content-splitter").height())
         // we want full width
