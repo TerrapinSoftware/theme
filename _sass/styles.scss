@@ -297,14 +297,25 @@ button.toggle {
 
 // printing
 @media print {
+  html, body {
+    height: auto;
+  }
+  .wrapper {
+    display: block;
+  }
   #content-main {
     display: block !important;
+    overflow: visible;
   }
   #content-header, #content-footer,
   #content-splitter,
   #content-sidebar,
+  #button-bar,
   .toc {
     display: none !important;
+  }
+  #content-right .content {
+    position: unset;
   }
 }
 
