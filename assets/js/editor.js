@@ -233,7 +233,7 @@ class Editor {
     sanitize(html) {
         html = html.replace(/<img src="(.*?)"/gs, (match, url) => {
             if (!url.startsWith("http") && !url.startsWith("/"))
-                return `<img src="${this.dir}/${url}"`;
+                return `<img src="${this.session.dir}/${url}"`;
             return match;
         });
         return html;
