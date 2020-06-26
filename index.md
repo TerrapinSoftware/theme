@@ -1,4 +1,4 @@
-# Sidebar Test #1
+# Sidebar Test #2
 
 [Visit Google!](https://google.com).
 
