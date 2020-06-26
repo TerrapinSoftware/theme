@@ -266,18 +266,23 @@ class Editor {
         this._logout();
         user = encodeURIComponent(user);
         pass = encodeURIComponent(pass);
-        let res = await fetch(this.host + "/login?user=" + user + "&pass=" + pass);
-        if (res.ok) {
-            res = await res.json();
-            res.time = Date.now();
-            if (res.code == 200) {
-                this.session.sha = "";
-                this.setSession(res);
-                $("#edit-login-dlg").modal("hide");
-                await this.load();
-            } else
-                $("#login-error").text("Bad username or password");
-            $('#edit-user').trigger('focus');
+        try {
+            let res = await fetch(this.host + "/login?user=" + user + "&pass=" + pass);
+            if (res.ok) {
+                res = await res.json();
+                res.time = Date.now();
+                if (res.code == 200) {
+                    this.session.sha = "";
+                    this.setSession(res);
+                    $("#edit-login-dlg").modal("hide");
+                    await this.load();
+                } else
+                    $("#login-error").text("Bad username or password");
+                $('#edit-user').trigger('focus');
+            }
+        }
+        catch (e) {
+            this.msgBox(e.message);
         }
     }
     _logout() {
