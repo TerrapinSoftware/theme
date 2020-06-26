@@ -36,6 +36,9 @@
   <script src="/assets/js/jquery-splitter.js"></script>
   <script>
     $(document).ready(_ => {
+      $("#btn-edit-sb").on("click", _ => {
+        location.assign("/assets/html/editor.html?sb=1&edit=" + location.pathname);
+      });
       $("#btn-edit").on("click", _ => {
         location.assign("/assets/html/editor.html?edit=" + location.pathname);
       })

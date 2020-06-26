@@ -111,21 +111,23 @@ class Editor {
         this.mde.toggleFullScreen();
 
         let s = new URLSearchParams(location.search);
-        if (!this.session.dir) {
-            let path = s.get("edit");
-            if (!path)
+        let path = s.get("edit");
+        if (!path) {
+            if (!this.session.path)
                 this.msgBox("You did not supply the name of the file to edit.");
-            else {
-                path = path.split("/");
-                let name = path.pop();
-                if (!name)
-                    name = "index";
-                if (!name.includes("."))
-                    name += ".md";
-                this.session.dir = path.join("/");
-                path.push(name);
-                this.setSession({ origPath: s.get("edit"), path: path.join("/") });
-            }
+        }
+        else {
+            path = path.split("/");
+            let name = path.pop();
+            if (s.has("sb"))
+                name = "_sidebar.md";
+            if (!name)
+                name = "index";
+            if (!name.includes("."))
+                name += ".md";
+            this.session.dir = path.join("/");
+            path.push(name);
+            this.setSession({ origPath: s.get("edit"), path: path.join("/") });
         }
         $('#edit-login-dlg').on('shown.bs.modal', function () {
             $('#edit-user').trigger('focus');
@@ -243,9 +245,6 @@ class Editor {
             sessionStorage.setItem(key, this.session[key]);
     }
     login() {
-        $("#edit-login-dlg").modal();
-    }
-    logout() {
         this._logout();
         $("#edit-login-dlg").modal();
     }
@@ -282,6 +281,8 @@ class Editor {
         }
     }
     _logout() {
+        this.mde.clearAutosavedValue();
+        this.mde.value("");
         $("#login-error").text("");
         for (var key in this.session)
             sessionStorage.removeItem(key);
