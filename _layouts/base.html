@@ -10,9 +10,13 @@
     if (window.document.documentMode)
       location.assign("/no-ie.html");
     (function() {
-      let s = new URLSearchParams(location.search);
-      if (s.has("edit") && location.pathname !== "/assets/html/editor.html")
-        location.assign("/assets/html/editor.html?edit=" + location.pathname);
+      if (location.pathname !== "/assets/html/editor.html") {
+        let s = new URLSearchParams(location.search);
+        if (s.has("edit"))
+          location.assign("/assets/html/editor.html?edit=" + location.pathname);
+        if (s.has("sbedit"))
+          location.assign("/assets/html/editor.html?sb=1&edit=" + location.pathname);
+      }
     })();
   </script>
   <link href="/assets/img/favicon.ico" rel="icon" type="image/x-icon" />
@@ -34,16 +38,6 @@
   <script src="/assets/js/jquery.highlight.js"></script>
   {% if page.layout == 'sidebar' %}
   <script src="/assets/js/jquery-splitter.js"></script>
-  <script>
-    $(document).ready(_ => {
-      $("#btn-edit-sb").on("click", _ => {
-        location.assign("/assets/html/editor.html?sb=1&edit=" + location.pathname);
-      });
-      $("#btn-edit").on("click", _ => {
-        location.assign("/assets/html/editor.html?edit=" + location.pathname);
-      })
-    });
-  </script>
   {% endif %}
   {% if page.verify != false %}
   <script src="/assets/js/verify.min.js"></script>
