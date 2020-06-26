@@ -1,0 +1,61 @@
+---
+title: Editor
+layout: default
+verify: false
+toc: false
+css:
+- terrapin.css
+scripts:
+- editor.js
+- easymde-2.10.1.min.js
+---
+<link rel="stylesheet" href="https://unpkg.com/easymde@2.10.1/dist/easymde.min.css">
+<--script src="https://unpkg.com/easymde@2.10.1/dist/easymde.min.js">
+    </script>
+    <textarea id="editor-box"></textarea>
+
+    <div class="modal" id="msgbox" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bs-confirm" class="modal fade alert" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="bs-confirm-msg" class="modal-body"></div>
+                <div class="modal-footer">
+                    <button id="bs-confirm-yes" class="btn btn-default btn-ok" data-dismiss="modal">Yes</button>
+                    <button id="bs-confirm-no" class="btn btn-cancel" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="edit-login-dlg" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="code">User Name:</label>
+                        <input type="text" class="form-control" id="edit-user" pattern="[A-Za-z]">
+                    </div>
+                    <div class="form-group">
+                        <label for="code">Password:</label>
+                        <input type="password" class="form-control" id="edit-pass" pattern="[A-Za-z0-9.!$%\-_]">
+                    </div>
+                    <div id="login-error"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="edit-login" class="btn btn-primary">Log In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="wait-spinner" style="display:none">
+        <img src="/assets/img/loading.png" class="centered spinning">
+    </div>

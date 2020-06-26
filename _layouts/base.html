@@ -1,62 +1,82 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
-    <meta charset="utf-8" />
-    <title>{{page.title}}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script>
-      if (window.document.documentMode)
-        location.assign("/no-ie.html");
-    </script>
-    <link href="/assets/img/favicon.ico" rel="icon" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/theme-colors.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/terrapin.css" />
-    <!-- Font Awesome -->
-    <link href="/assets/css/all.min.css" rel="stylesheet" />
-    <!-- bootstrap 4x -->
-    <link rel="stylesheet" href="/assets/css/bootstrap-4.4.1.min.css" />
-    <script src="/assets/js/jquery-3.4.1.slim.min.js"></script>
-    <script src="/assets/js/popper-1.16.0.min.js"></script>
-    <script src="/assets/js/bootstrap-4.4.1.min.js"></script>
-    <script src="/assets/js/search.js"></script>
-    <script>TerrapinSearch.group = "{{page.search_group}}";</script>
-    <script src="/assets/js/jquery.highlight.js"></script>
-    {% if page.layout == 'sidebar' %}
-    <script src="/assets/js/jquery-splitter.js"></script>
-    {% endif %}
-    {% if page.verify != false %}
-    <script src="/assets/js/verify.min.js"></script>
-    {% endif %}
-    {% include head-{{page.layout}}.html %}
-    <script src="/assets/js/styles.js"></script>
-    {% for script in page.scripts %}
-        <script src="/assets/js/{{script}}"></script>
-    {% endfor %}
+  <meta charset="utf-8" />
+  <title>{{page.title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script>
+    if (window.document.documentMode)
+      location.assign("/no-ie.html");
+    (function() {
+      let s = new URLSearchParams(location.search);
+      if (s.has("edit") && location.pathname !== "/assets/html/editor.html")
+        location.assign("/assets/html/editor.html?edit=" + location.pathname);
+    })();
+  </script>
+  <link href="/assets/img/favicon.ico" rel="icon" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/theme-colors.css" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/terrapin.css" />
+  <!-- Font Awesome -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" />
+  <!-- bootstrap 4x -->
+  <link rel="stylesheet" href="/assets/css/bootstrap-4.4.1.min.css" />
+  {% for css in page.css %}
+  <link rel="stylesheet" href="/assets/css/{{css}}" />
+  {% endfor %}
+  <script src="/assets/js/jquery-3.5.1.slim.js"></script>
+  <script src="/assets/js/popper-1.16.0.min.js"></script>
+  <script src="/assets/js/bootstrap-4.4.1.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  <script>TerrapinSearch.group = "{{page.search_group}}";</script>
+  <script src="/assets/js/jquery.highlight.js"></script>
+  {% if page.layout == 'sidebar' %}
+  <script src="/assets/js/jquery-splitter.js"></script>
+  <script>
+    $(document).ready(_ => {
+      $("#btn-edit").on("click", _ => {
+        location.assign("/assets/html/editor.html?edit=" + location.pathname);
+      })
+    });
+  </script>
+  {% endif %}
+  {% if page.verify != false %}
+  <script src="/assets/js/verify.min.js"></script>
+  {% endif %}
+  {% include head-{{page.layout}}.html %}
+  <script src="/assets/js/styles.js"></script>
+  {% for script in page.scripts %}
+  <script src="/assets/js/{{script}}"></script>
+  {% endfor %}
 </head>
 
 <body>
-    {% if page.verify %}
-    <div class="wrapper" style="display:none">
+  {% if page.verify %}
+  <div class="wrapper" style="display:none">
     {% else %}
     <div class="wrapper">
-    {% endif %}
-    {{ content }}
+      {% endif %}
+      {{ content }}
     </div>
-<div id="search-result" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Search Results for "<span id="search-text"></span>"</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+    <div id="search-result" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Search Results for "<span id="search-text"></span>"</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          </div>
+        </div>
       </div>
     </div>
+  {% if page.verify %}
   </div>
-</div>
+  {% endif %}
 </body>
+
 </html>
