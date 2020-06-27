@@ -10,13 +10,14 @@
     if (window.document.documentMode)
       location.assign("/no-ie.html");
     (function() {
-      if (location.pathname !== "/assets/html/editor.html") {
-        let s = new URLSearchParams(location.search);
-        if (s.has("edit"))
-          location.assign("/assets/html/editor.html?edit=" + location.pathname);
-        if (s.has("sbedit"))
-          location.assign("/assets/html/editor.html?sb=1&edit=" + location.pathname);
-      }
+      let host = location.hostname.split(".");
+      host[0] = "edit-" + host[0];
+      let url = `https://${host.join(".")}${location.pathname}`;
+      let s = new URLSearchParams(location.search);
+      if (s.has("edit"))
+        location.assign(url);
+      if (s.has("sbedit"))
+        location.assign(url + "?sb");
     })();
   </script>
   <link href="/assets/img/favicon.ico" rel="icon" type="image/x-icon" />
