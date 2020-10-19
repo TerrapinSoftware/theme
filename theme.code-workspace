@@ -10,5 +10,7 @@
 			"path": "../pub"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"markdown.styles": ["/Users/michael/github/terrapin/theme/assets/css/terrapin.css"]
+	}
 }

@@ -174,3 +174,25 @@ div.turtletalk table, div.turtletalk tbody, div.turtletalk tr, div.turtletalk td
     padding-right: 10px;
     float: left;
 }
+
+.col2, .col3, .col4 {
+    display: grid;
+    grid-row-gap: 1rem;
+    grid-column-gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.col2 {
+    grid-template-columns: 50% 50%;
+}
+.col3 {
+    grid-template-columns: 33% 33% 33%;
+}
+.col4 {
+    grid-template-columns: 25% 25% 25% 25%;
+}
+@media (max-width: 575px) { 
+    .col2, .col3, .col4 {
+        grid-template-columns: 100%;
+    }
+}
