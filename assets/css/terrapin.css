@@ -175,14 +175,14 @@ div.turtletalk table, div.turtletalk tbody, div.turtletalk tr, div.turtletalk td
     float: left;
 }
 
-.col2, .col3, .col4 {
+.col2, .col3, .col4, .col2-25, .col2-33, .col2-50, .col2-66, .col2-75 {
     display: grid;
     grid-row-gap: 1rem;
     grid-column-gap: 10px;
     margin-bottom: 1rem;
 }
 
-.col2 {
+.col2, .col2-50 {
     grid-template-columns: 50% 50%;
 }
 .col3 {
@@ -191,8 +191,21 @@ div.turtletalk table, div.turtletalk tbody, div.turtletalk tr, div.turtletalk td
 .col4 {
     grid-template-columns: 25% 25% 25% 25%;
 }
+.col2-25 {
+    grid-template-columns: 25% 75%;
+}
+.col2-33 {
+    grid-template-columns: 33% 67%;
+}
+.col2-66 {
+    grid-template-columns: 66% 34%;
+}
+.col2-75 {
+    grid-template-columns: 75% 25%;
+}
+
 @media (max-width: 575px) { 
-    .col2, .col3, .col4 {
+    .col2, .col3, .col4, .col2-25, .col2-33, .col2-50, .col2-66, .col2-75 {
         grid-template-columns: 100%;
     }
 }
