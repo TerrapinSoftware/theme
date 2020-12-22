@@ -5,6 +5,39 @@
  * in the Markdown Styles setting.
  */
 
+/* montserrat-regular - latin-ext_latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat Regular'), local('Montserrat-Regular'),
+       url('../webfonts/montserrat-v14-latin-ext_latin-regular.woff') format('woff');
+}
+/* montserrat-italic - latin-ext_latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Montserrat Italic'), local('Montserrat-Italic'),
+       url('../webfonts/montserrat-v14-latin-ext_latin-italic.woff') format('woff');
+}
+/* montserrat-700 - latin-ext_latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Montserrat Bold'), local('Montserrat-Bold'),
+       url('../webfonts/montserrat-v14-latin-ext_latin-700.woff') format('woff');
+}
+/* montserrat-700italic - latin-ext_latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Montserrat Bold Italic'), local('Montserrat-BoldItalic'),
+       url('../webfonts/montserrat-v14-latin-ext_latin-700italic.woff');
+}
+
 body {
     --infobox-background: #dee2e6;
     --infobox-text: #333;
