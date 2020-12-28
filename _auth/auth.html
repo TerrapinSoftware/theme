@@ -24,9 +24,9 @@
             let pass = $("#edit-pass").val();
             try {
                 let search = new URLSearchParams(location.search);
-                let res = await fetch("/login.php?user=" + user + "&pass=" + pass);
+                let res = await fetch("/login.php?user=" + encodeURIComponent(user) + "&pass=" + encodeURIComponent(pass));
                 if (res.status == 200)
-                    location.href = "/?workspace=/var/www/" + user + ".code-workspace";
+                    location.href = "/?workspace=/var/www/" + user.toLowerCase() + ".code-workspace";
                 else {
                     $("#login-error").text("Bad username or password");
                     $('#edit-user').trigger('focus');

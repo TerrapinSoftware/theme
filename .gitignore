@@ -3,3 +3,4 @@ Gemfile
 Gemfile.lock
 __tmp__.*
 .jekyll-metadata
+theme.code-workspace

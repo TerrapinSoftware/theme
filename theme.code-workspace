@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../pub"
+		},
+		{
+			"path": "../beebot"
 		}
 	],
 	"settings": {
