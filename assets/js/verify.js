@@ -1,8 +1,9 @@
 function verifyToken() {
+    debugger;
     var token = sessionStorage.getItem("token");
     if (token) {
         var xmlhttp = new XMLHttpRequest();
-        var url = atob("aHR0cHM6Ly9scy50ZXJyYXBpbmxvZ28uY29tP3Q9") + token;
+        var url = "https://as.terrapinlogo.com?domain=book&token=" + token;
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
                 if (this.status == 200) {
@@ -35,19 +36,8 @@ verifyToken();
 $(document).ready(function() {
     $("#logout").on("click", function(ev) {
         ev.preventDefault();
-        var token = sessionStorage.getItem("token");
-        if (token) {
-            var xmlhttp = new XMLHttpRequest();
-            var url = atob("aHR0cHM6Ly9scy50ZXJyYXBpbmxvZ28uY29tP3I9") + token;
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4) {
-                    sessionStorage.removeItem("token");
-                    location.href = "/";
-                }
-            };
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
-        }
+        sessionStorage.removeItem("token");
+        location.href = "/";
     });
     setTimeout(function() {
         debugger;
