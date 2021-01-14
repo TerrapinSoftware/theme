@@ -3,19 +3,17 @@ function verifyToken() {
     var token = sessionStorage.getItem("token");
     if (token) {
         var xmlhttp = new XMLHttpRequest();
-        var url = "https://as.terrapinlogo.com?domain=book&token=" + token;
+        var host = location.hostname.split(".");
+        host.shift();
+        var url = "https://as." + host.join(".") + "?domain=book&token=" + token;
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
                 if (this.status == 200) {
                     var data = JSON.parse(this.responseText);
-                    var path = location.pathname.substr(1).split('/');
-                    // First path element must be == SKU
-                    if (path[0] === data.sku) {
-                        $("#name").text(data.name);
-                        $(".wrapper").show();
-                        $(window).trigger("verified");
-                        return;
-                    }
+                    $("#name").text(data.name);
+                    $(".wrapper").show();
+                    $(window).trigger("verified");
+                    return;
                 }
                 // leave it for now so people can return to a correct page
 //                sessionStorage.removeItem("token");

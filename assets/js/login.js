@@ -9,7 +9,9 @@ $(document).ready(function() {
         $("#error").hide();
         var code = $("#code").val().trim().toUpperCase();
         var xmlhttp = new XMLHttpRequest();
-        var url = "https://as.terrapinlogo.com?domain=book&user=" + code;
+        var host = location.hostname.split(".");
+        host.shift();
+        var url = "https://as." + host.join(".") + "?domain=book&user=" + code;
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
                 if (this.status == 200) {
