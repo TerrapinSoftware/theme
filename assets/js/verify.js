@@ -5,7 +5,7 @@ function verifyToken() {
         var xmlhttp = new XMLHttpRequest();
         var host = location.hostname.split(".");
         host.shift();
-        var url = "https://as." + host.join(".") + "?domain=book&token=" + token;
+        var url = "https://as." + host.join(".") + "?domain=book&do=refresh&token=" + token;
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
                 if (this.status == 200) {
