@@ -10,10 +10,12 @@ function verifyToken() {
             if (this.readyState == 4) {
                 if (this.status == 200) {
                     var data = JSON.parse(this.responseText);
-                    $("#name").text(data.name);
-                    $(".wrapper").show();
-                    $(window).trigger("verified");
-                    return;
+                    if (!data.code || data.code <= 299) {
+                        $("#name").text(data.name);
+                        $(".wrapper").show();
+                        $(window).trigger("verified");
+                        return;
+                    }
                 }
                 // leave it for now so people can return to a correct page
 //                sessionStorage.removeItem("token");
