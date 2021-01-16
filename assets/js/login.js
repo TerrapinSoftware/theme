@@ -11,7 +11,7 @@ $(document).ready(function() {
         var xmlhttp = new XMLHttpRequest();
         var host = location.hostname.split(".");
         host.shift();
-        var url = "https://as." + host.join(".") + "?domain=book&user=" + code + "&expires=30";
+        var url = "https://as." + host.join(".") + "?domain=book&user=" + code;
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
                 if (this.status == 200) {
