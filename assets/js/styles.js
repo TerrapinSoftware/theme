@@ -3,7 +3,7 @@ $(document).ready(function () {
     var q = new URLSearchParams(location.search);
     var s = (q.get("hide") || "").split(",");
     for (var el of s)
-        $(".hide-" + el).css("cssText", "display:none !important");
+        $(".hide-" + el).remove();
     if (s.includes("sidebar"))
         delete window.Split;
     // Set up the splitter in case we have a sidebar layout
