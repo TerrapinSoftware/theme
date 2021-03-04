@@ -135,11 +135,6 @@ table.cmdref .table-up:after {
     content: ' ^';
 }
 
-#tagcloud {
-    width: 100%;
-    height: 300px;
-}
-
 div.turtletalk table, div.turtletalk tbody, div.turtletalk tr, div.turtletalk td, div.turtletalk th {
     border: 0;
     margin: 0;
